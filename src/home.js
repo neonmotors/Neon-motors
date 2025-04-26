@@ -742,7 +742,7 @@ const Showrooms = () => {
       </h2>
       
       {/* Grid */}
-      <div className="grid grid-cols-1 gap-6 pl-16 pr-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:pr-16 md:pl-16">
         {showroomData.map((showroom, index) => (
           <ShowroomCard key={index} showroom={showroom} />
         ))}
@@ -763,7 +763,7 @@ const Showrooms2 = () => {
       </h2>
       
       {/* Grid */}
-      <div className="grid grid-cols-1 gap-6 pl-16 pr-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:pr-6 md:pl-16 md:grid-cols-2 lg:grid-cols-3">
         {showroomData2.map((showroom, index) => (
           <ShowroomCard key={index} showroom={showroom} />
         ))}
