@@ -1,11 +1,8 @@
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { useRef, useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-
 
 const carOffers = [
   {
@@ -31,27 +28,28 @@ const carOffers = [
   {
     name: "Mahindra Thar ROXX",
     price: "₹65,000*",
-    image: "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mahindra/Thar-ROXX/8438/1723692413550/front-left-side-47.jpg",
+    image:
+      "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mahindra/Thar-ROXX/8438/1723692413550/front-left-side-47.jpg",
   },
   {
     name: "Mahindra BE 6",
     price: "₹60,000*",
-    image: "https://img.gaadicdn.com/images/car-images/large/Mahindra/BE-6/9263/1739254827715/225_Mahindra-BE-6e_Tango-Red_b60028.jpg",
+    image:
+      "https://img.gaadicdn.com/images/car-images/large/Mahindra/BE-6/9263/1739254827715/225_Mahindra-BE-6e_Tango-Red_b60028.jpg",
   },
- 
   {
     name: "Mahindra XEV 9e",
     price: "₹53,000*",
-    image: "https://img.gaadicdn.com/images/car-images/large/Mahindra-XEV/9e/9262/1732772711472/223_Mahindra-XEV-9e_Desert-Myst_787b6d.jpg",
+    image:
+      "https://img.gaadicdn.com/images/car-images/large/Mahindra-XEV/9e/9262/1732772711472/223_Mahindra-XEV-9e_Desert-Myst_787b6d.jpg",
   },
-
- 
 ];
 
 function OffersCarousel() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
+
   useEffect(() => {
     if (swiperInstance) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
@@ -62,14 +60,16 @@ function OffersCarousel() {
   }, [swiperInstance]);
 
   return (
-    <div className="bg-[#392e2e] text-white py-8">
-      <h2 className="mb-6 text-3xl font-bold text-center">Our Exclusive Offers</h2>
+    <div className="bg-gradient-to-t from-[#1f1c2c] to-[#928DAB] text-white py-14 px-4 sm:px-8 z-[-300px] ">
+      <h2 className="mb-10 text-4xl font-extrabold tracking-wide text-center">
+       Our Exclusive Offers
+      </h2>
 
-      <div className="relative px-6 mx-auto max-w-7xl">
-        {/* Previous Button */}
+      <div className="relative mx-auto max-w-7xl">
+        {/* Prev Button */}
         <button
           ref={prevRef}
-          className="absolute left-0 z-10 p-3 text-white -translate-y-1/2 bg-gray-800 rounded-full cursor-pointer top-1/2 hover:bg-gray-700"
+          className="absolute left-0 z-10 p-3 text-white -translate-y-1/2 rounded-full cursor-pointer bg-black/50 backdrop-blur-md top-1/2 hover:bg-black/70"
         >
           ❮
         </button>
@@ -78,7 +78,7 @@ function OffersCarousel() {
           modules={[Navigation]}
           spaceBetween={20}
           slidesPerView={1}
-          onSwiper={setSwiperInstance} // Store swiper instance
+          onSwiper={setSwiperInstance}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
@@ -92,21 +92,22 @@ function OffersCarousel() {
         >
           {carOffers.map((car, index) => (
             <SwiperSlide key={index}>
-              <div className="relative p-5 transition-transform bg-white shadow-xl rounded-xl hover:scale-105">
-                <div className="absolute top-0 right-0 px-3 py-1 text-xs font-bold text-white bg-red-600 rounded-bl-lg">
+              <div className="relative h-full p-5 transition-transform duration-300 transform bg-white shadow-2xl rounded-2xl hover:scale-105">
+                <div className="absolute top-0 right-0 px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-bl-xl">
                   OFFER
                 </div>
                 <img
                   src={car.image}
                   alt={car.name}
-                  width={350}
-                  height={250}
-                  className="w-full rounded-lg"
+                  className="object-cover w-full h-48 rounded-lg"
                 />
-                <h3 className="mt-4 text-xl font-semibold text-blue-900">{car.name}</h3>
-                <p className="text-lg font-bold text-red-600">
-                  <span className="text-black text-md">Save up to:</span> {car.price}
-                </p>
+                <div className="pt-4">
+                  <h3 className="text-lg font-bold text-gray-800">{car.name}</h3>
+                  <p className="mt-1 font-medium text-gray-600 text-md">
+                    <span className="text-gray-800">Save up to: </span>
+                    <span className="font-semibold text-red-600">{car.price}</span>
+                  </p>
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -115,13 +116,13 @@ function OffersCarousel() {
         {/* Next Button */}
         <button
           ref={nextRef}
-          className="absolute right-0 z-10 p-3 text-white -translate-y-1/2 bg-gray-800 rounded-full cursor-pointer top-1/2 hover:bg-gray-700"
+          className="absolute right-0 z-10 p-3 text-white -translate-y-1/2 rounded-full cursor-pointer bg-black/50 backdrop-blur-md top-1/2 hover:bg-black/70"
         >
           ❯
         </button>
       </div>
 
-      <p className="mt-3 text-sm text-gray-400 text-end">*TnC apply</p>
+      <p className="mx-auto mt-6 text-sm text-gray-300 text-end max-w-7xl">*T&C apply</p>
     </div>
   );
 }
